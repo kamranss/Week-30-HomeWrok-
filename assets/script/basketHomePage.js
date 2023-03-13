@@ -11,7 +11,7 @@ buttons.forEach(btn =>{
 
         console.log(id);
 
-        if (console.log(localStorage.getItem("basket")==! null)) {
+        if (localStorage.getItem("basket") != null) {
             getArr = JSON.parse(localStorage.getItem("basket"))
 
             getArr.push({
@@ -36,15 +36,10 @@ buttons.forEach(btn =>{
             price:price,
             count: 1
         })
+    
         
+        localStorage.setItem("basket", JSON.stringify(arr));
 
-        
-        console.log(imgSRC);
-        console.log(productName);
-        console.log(price);
-        console.log(arr);
-
-        localStorage.setItem("basket", JSON.stringify(arr))
         }
         
         
