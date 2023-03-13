@@ -11,31 +11,30 @@ buttons.forEach(btn =>{
 
         console.log(id);
 
-        if (localStorage.getItem("basket") != null) {
-            getArr = JSON.parse(localStorage.getItem("basket"))
+        if (localStorage.getItem("basket") == null) {
+            
+            localStorage.setItem("basket", JSON.stringify([]));
 
-            getArr.push({
+        }
+        else{
+
+        let arr = JSON.parse(localStorage.getItem("basket"))
+        
+        let existProduct = arr.find(product => product.id == id);
+        if (existProduct == undefined) {
+            arr.push({
                 id: id,
                 imgSRC: imgSRC,
                 productName: productName,
                 price:price,
                 count: 1
             })
-
-            localStorage.setItem("basket", JSON.stringify(getArr));
-            console.log(getArr);
         }
         else{
-
-            let arr =[];
-        
-        arr.push({
-            id: id,
-            imgSRC: imgSRC,
-            productName: productName,
-            price:price,
-            count: 1
-        })
+            existProduct.count++;
+        }
+       
+       
     
         
         localStorage.setItem("basket", JSON.stringify(arr));
