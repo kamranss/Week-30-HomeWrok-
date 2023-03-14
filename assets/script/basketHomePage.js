@@ -1,5 +1,7 @@
 let buttons = document.querySelectorAll(".btn-primary");
+let basketCount = document.getElementById("basketCount");
 
+basketCountCalculator();
 
 buttons.forEach(btn =>{
     btn.addEventListener("click", function(e){
@@ -13,15 +15,8 @@ buttons.forEach(btn =>{
 
         if (localStorage.getItem("basket") == null) {
             
-            localStorage.setItem("basket", JSON.stringify([]));
+            let arr = []
 
-        }
-        else{
-
-        let arr = JSON.parse(localStorage.getItem("basket"))
-        
-        let existProduct = arr.find(product => product.id == id);
-        if (existProduct == undefined) {
             arr.push({
                 id: id,
                 imgSRC: imgSRC,
@@ -29,18 +24,44 @@ buttons.forEach(btn =>{
                 price:price,
                 count: 1
             })
-        }
-        else{
-            existProduct.count++;
-        }
-       
-       
-    
-        
-        localStorage.setItem("basket", JSON.stringify(arr));
+
+            localStorage.setItem("basket", JSON.stringify(arr));
+            
 
         }
-        
+        else{
+
+            let arr = JSON.parse(localStorage.getItem("basket"))
+            
+            let existProduct = arr.find(product => product.id == id);
+            if (existProduct == undefined) {
+                arr.push({
+                    id: id,
+                    imgSRC: imgSRC,
+                    productName: productName,
+                    price:price,
+                    count: 1
+                })
+
+            
+            }
+            else{
+                existProduct.count++;
+            }
+
+            localStorage.setItem("basket", JSON.stringify(arr));
+        }
+
+        basketCountCalculator();
+    
         
     })
 })
+
+
+function basketCountCalculator(){
+    if (localStorage.getItem("basket") != null) {
+        let arr =  JSON.parse(localStorage.getItem("basket"));
+        basketCount.innerText = arr.length;
+    }
+}

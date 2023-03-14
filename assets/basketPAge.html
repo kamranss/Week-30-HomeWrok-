@@ -41,7 +41,7 @@
                         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="./basketPAge.html" tabindex="-1" aria-disabled="true">Basket <i class="fa-solid fa-basket-shopping"> <sup style="color: brown; font-size: 13px; font-weight: 700;">0</sup></i></a>
+                        <a class="nav-link" href="./basketPAge.html" tabindex="-1" aria-disabled="true">Basket <i class="fa-solid fa-basket-shopping"> <sup id="basketCount" style="color: brown; font-size: 13px; font-weight: 700;">0</sup></i></a>
                       </li>
                     </ul>
                     <form class="d-flex">
@@ -52,29 +52,31 @@
                 </div>
               </nav>
               <table class="table mt-5">
-                <thead>
-                  <tr>
+                <thead id="tableHead">
+                  <!-- <tr>
                     <th scope="col">#</th>
                     <th scope="col">Image</th>
                     <th scope="col">Name</th>
                     <th scope="col">Quantity</th>
                     <th scope="col">Price</th>
                     <th scope="col">Delete</th>
-                  </tr>
+                  </tr> -->
                 </thead>
-                <tbody>
-                  <tr>
+                <tbody id="tableBody">
+                  <!-- <tr>
                     <th scope="row">1</th>
-                    <td>Mark</td>
+                    <td><img src="./image/" alt=""></td>
                     <td>Otto</td>
                     <td>@mdo</td>
                     <td>@mdo</td>
-                    <td><i class="fa-solid fa-trash"></i></td>
+                    <td class="d-flex justify-content-center align-items-center" style="cursor: pointer;"><i class="fa-solid fa-trash"></i></td>
                   </tr>
-                  
+                   -->
                 </tbody>
               </table>
         </div>
     </div>
 </body>
+<script src=".//script/basketHomePage.js"></script>
+<script src=".//script/basketPage.js"></script>
 </html>
