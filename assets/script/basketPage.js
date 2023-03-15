@@ -30,8 +30,8 @@ if (localStorage.getItem("basket") != null) {
             <tr>
                 <th id = "number" scope="row"></th>
                 <td><img src="${product.imgSRC}" alt="" width = "120" height = "120"></td>
-                <td>${product.productName}</td>
-                <td>${product.count}</td>
+                <td id = "productName">${product.productName}</td>
+                <td><i id = "decrement" class="fa-solid fa-circle-minus style="cursor: pointer;"></i> ${product.count} <i id = "increment" class="fa-solid fa-circle-plus style="cursor: pointer;"></i></td>
                 <td>@mdo</td>
                 <td><i id = "Icon-delete"class="fa-solid fa-trash" style="cursor: pointer;"></i></td>
             </tr>
@@ -40,6 +40,7 @@ if (localStorage.getItem("basket") != null) {
         tableBody.append(bodyTr);
         numarationforItems();
         DeleteFilesUsingIcon();
+        decrementIcon();
         
 
 
@@ -60,7 +61,6 @@ function numarationforItems() {
 
 function DeleteFilesUsingIcon(){
     let icondeleteBoxes = document.querySelectorAll("#Icon-delete");
-    console.log(icondeleteBoxes);
 
     icondeleteBoxes.forEach(function (icondeleteBox) {
 
@@ -70,10 +70,24 @@ function DeleteFilesUsingIcon(){
             if (colsestTd) {
                 let mainTr = colsestTd.parentElement;
                 console.log(mainTr);
-                let trPArent = mainTr.parentNode;
-                console.log(trPArent);
-                if (trPArent) {
+                let tBody = mainTr.parentNode;
+                console.log(tBody);
+                if (tBody) {
+
+
+                    let productName = icondeleteBox.closest("td").previousElementSibling.previousElementSibling.previousElementSibling.innerText
+                    console.log(typeof(productName));
+                    let arr = JSON.parse(localStorage.getItem("basket"));
+                    console.log(arr);
+                    let existProduct = arr.find(product => product.productName == productName);
+                    console.log(existProduct);
+                    if (existProduct != undefined) {
+                        let newArr = arr.filter(product =>  product.productName != productName);
+                        localStorage.setItem("basket", JSON.stringify(newArr));
+                    }
+
                     mainTr.parentNode.removeChild(mainTr);
+
                 }
             }
 
@@ -83,14 +97,11 @@ function DeleteFilesUsingIcon(){
 
             if (!numbers.length > 0) {
 
-                tHeadChildTr = document.querySelector(".trHead")
+                tHeadChildTr = document.querySelector(".trHead");
 
                 tHeadChildTrParent = tHeadChildTr.parentNode; // issue
 
-                tHeadChildTr.parentNode.removeChild(tHeadChildTr)
-
-                // let deleteAllButton = document.querySelector(".Delete-all");
-                // deleteAllButton.parentNode.removeChild(deleteAllButton);
+                tHeadChildTr.parentNode.removeChild(tHeadChildTr);
 
 
             }
@@ -103,6 +114,28 @@ function DeleteFilesUsingIcon(){
     })
 }
 
+
+function decrementIcon (){
+
+    decrementIcons = document.querySelectorAll("#decrement");
+
+    decrementIcons.forEach(dIcon => {
+        dIcon.addEventListener("click", function (){
+          
+            productName = dIcon.parentNode.previousElementSibling.innerText;
+            let arr = JSON.parse(localStorage.getItem("basket"));
+            let newArr = arr.find(product => product.productName == productName)
+
+            newArr.count --;
+
+            localStorage.setItem("basket", JSON.stringify(arr))
+        } )
+
+        
+
+    })
+
+}
 // buttons.forEach(btn=>{
 //     btn.addEventListener("click", function(){
 //         let arr = JSON.parse(localStorage.getItem("basket"));
