@@ -9,7 +9,32 @@
   display: none;
 }
 
-.image-mover .active {
-  display: block;
-  z-index: 5;
+.image-mover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: inherit;
+  width: 100%;
+  height: 300px;
+  border-radius: inherit;
+  display: none;
+  animation-duration: 4s;
+  transition: 10s;
+  animation-name: test;
+  transition-delay: 10s;
+}
+
+@keyframes test {
+  0% {
+    bottom: 100px;
+    left: 20px;
+  }
+  80% {
+    bottom: 300px;
+    left: 400px;
+  }
+  100% {
+    bottom: 600px;
+    left: 0px;
+  }
 }/*# sourceMappingURL=basket.css.map */

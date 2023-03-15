@@ -16,7 +16,7 @@ if (localStorage.getItem("basket") != null) {
                     <th scope="col">Name</th>
                     <th scope="col">Quantity</th>
                     <th scope="col">Price</th>
-                    <th scope="col">Delete</th>n
+                    <th scope="col">Delete</th>
                 </tr>
                 `
                 tableHead.append(headTr);
@@ -32,7 +32,7 @@ if (localStorage.getItem("basket") != null) {
                 <td><img src="${product.imgSRC}" alt="" width = "120" height = "120"></td>
                 <td id = "productName">${product.productName}</td>
                 <td><i id = "decrement" class="fa-solid fa-circle-minus"></i> <span id = "count">${product.count} </span> <i id = "increment" class="fa-solid fa-circle-plus" ></i></td>
-                <td>@mdo</td>
+                <td>${product.price}</td>
                 <td><i id = "Icon-delete"class="fa-solid fa-trash" style="cursor: pointer;"></i></td>
             </tr>
           `
@@ -104,7 +104,6 @@ function DeleteFilesUsingIcon(){
 
                 tHeadChildTr.parentNode.removeChild(tHeadChildTr);
 
-
             }
 
             numarationforItems();
@@ -169,3 +168,21 @@ function incrementIcon (){
 
 }
 
+// function Animate(){
+//     let parent = e.target.parentNode.parentNode
+//             console.log(parent);
+//             let image = parent.querySelector("img");
+//             let span = document.createElement("span");
+//             span.className = "image-mover ";
+//             parent.insertBefore(span, parent.lastElementChild);
+            
+//             let s_image = image.cloneNode(false);
+//             span.appendChild(s_image);
+//             span.classList.add("active")
+
+        
+//             setTimeout(()=>{
+//                 span.classList.remove("active");
+//                 span.removeChild(s_image);
+//             },500)
+// }

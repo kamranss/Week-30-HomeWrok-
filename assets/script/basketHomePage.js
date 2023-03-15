@@ -49,22 +49,6 @@ buttons.forEach(btn =>{
                 existProduct.count++;
             }
 
-            let parent = e.target.parentNode.parentNode
-            console.log(parent);
-            let image = parent.querySelector("img");
-            let span = document.createElement("span");
-            span.className = "image-mover";
-            parent.insertBefore(span, parent.lastElementChild);
-            
-            let s_image = image.cloneNode(false);
-            span.appendChild(s_image);
-            span.classList.add("active")
-            
-            // setTimeout(()=>{
-            //     span.classList.remove("active");
-            //     span.removeChild(s_image);
-            // },500)
-
             localStorage.setItem("basket", JSON.stringify(arr));
         }
 
