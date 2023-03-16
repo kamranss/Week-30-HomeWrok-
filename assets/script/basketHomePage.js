@@ -11,6 +11,7 @@ buttons.forEach(btn =>{
         productName = btn.parentNode.firstElementChild.innerText
         price = btn.nextElementSibling.innerText
 
+        Animate(e)
         console.log(id);
 
         if (localStorage.getItem("basket") == null) {
@@ -64,4 +65,25 @@ function basketCountCalculator(){
         let arr =  JSON.parse(localStorage.getItem("basket"));
         basketCount.innerText = arr.length;
     }
+}
+
+
+function Animate(e){
+    let parent = e.target.parentNode.parentNode
+            console.log(parent);
+            let image = parent.querySelector("img");
+            console.log(image);
+            let span = document.createElement("span");
+            span.classList.add("image-mover");
+            parent.insertBefore(span, parent.lastElementChild);
+            
+            let s_image = image.cloneNode(true);
+            span.appendChild(s_image);
+            // span.classList.add("active")
+
+        
+            // setTimeout(()=>{
+            //     span.classList.remove("active");
+            //     span.removeChild(s_image);
+            // },500)
 }
