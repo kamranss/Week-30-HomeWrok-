@@ -21,14 +21,16 @@ if (localStorage.getItem("basket") != null) {
                 `
                 tableHead.append(headTr);
                 let table = document.querySelector(".table");
-                let totalPrice =0
-                productList.forEach(p =>{
-                    totalPrice+= product.price.slice(0,product.price.length-1) * product.count
-                })
+                // let totalPrice =0
+                // productList.forEach(p =>{
+                //     totalPrice+= product.price.slice(0,product.price.length-1) * product.count
+                // })
+
+                let totalPrice = totalPriceCalculator(productList)
                 // ${product.price.slice(0,product.price.length-1)}
                 let span = document.createElement("span");
                 span.classList.add("total-price")
-                span.innerHTML = `<span class="d-flex justify-content-center">Total Price</span><span class="d-flex justify-content-center"> ${totalPrice} $<br></span>`
+                span.innerHTML = `<span class="d-flex justify-content-center">Total Price</span><span class="d-flex justify-content-center span-price"> ${totalPrice} $<br></span>`
                 table.append(span)
                 
 
@@ -54,7 +56,7 @@ if (localStorage.getItem("basket") != null) {
         DeleteFilesUsingIcon();
 
     })
-    decrementIcon();
+    decrementIcon(productList);
     incrementIcon();
     
 }
@@ -158,6 +160,13 @@ function decrementIcon (){
             if (newArr.count >=2) {
                 newArr.count--;
                 dIcon.nextElementSibling.innerText = newArr.count
+
+                let spanPrice = document.querySelector(".span-price");
+                console.log(spanPrice);
+                let totalPrice = totalPriceCalculator(arr)
+                console.log(totalPrice);
+                spanPrice.innerText = `${totalPrice}`
+
                 localStorage.setItem("basket", JSON.stringify(arr))
 
             }  
@@ -194,3 +203,10 @@ function incrementIcon (){
 
 }
 
+function totalPriceCalculator(productList){
+    let totalPrice =0
+    productList.forEach(p =>{
+        totalPrice+= p.price.slice(0,p.price.length-1) * p.count
+    })
+    return totalPrice;
+}

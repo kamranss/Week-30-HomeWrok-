@@ -90,4 +90,9 @@
   width: 100px;
   top: 650px;
   left: 1386px;
+  transition: 0.8s;
+}
+
+.total-price:hover {
+  transform: scale(1.5);
 }/*# sourceMappingURL=basket.css.map */
