@@ -20,6 +20,18 @@ if (localStorage.getItem("basket") != null) {
                 </tr>
                 `
                 tableHead.append(headTr);
+                let table = document.querySelector(".table");
+                let totalPrice =0
+                productList.forEach(p =>{
+                    totalPrice+= product.price.slice(0,product.price.length-1) * product.count
+                })
+                // ${product.price.slice(0,product.price.length-1)}
+                let span = document.createElement("span");
+                span.classList.add("total-price")
+                span.innerHTML = `<span class="d-flex justify-content-center">Total Price</span><span class="d-flex justify-content-center"> ${totalPrice} $<br></span>`
+                table.append(span)
+                
+
             }
             
 
