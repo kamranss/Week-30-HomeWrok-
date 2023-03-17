@@ -1,9 +1,28 @@
+.nav-link {
+  transition: 0.8s;
+}
+
+.nav-link:hover {
+  transform: scale(1.2);
+  background-color: grey;
+  border-radius: 5px;
+}
+
 .image-mover {
   position: absolute;
   border-radius: inherit;
   animation-duration: 1.5s;
   /* transition-duration: 5s; */
   animation-name: test;
+}
+
+.card-img-top {
+  transition: 0.8s;
+}
+
+.card-img-top:hover {
+  transform: scale(1.2);
+  background-color: grey;
 }
 
 @keyframes test {
@@ -23,7 +42,7 @@
     left: 100px;
     width: 40%;
     height: 40%;
-    opacity: 0.6;
+    opacity: 0.5;
   }
   100% {
     bottom: 400px;

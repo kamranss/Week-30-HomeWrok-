@@ -79,11 +79,12 @@ function Animate(e){
             
             let s_image = image.cloneNode(true);
             span.appendChild(s_image);
-            // span.classList.add("active")
+//             span.classList.add("active")
+
 
         
-            // setTimeout(()=>{
-            //     span.classList.remove("active");
-            //     span.removeChild(s_image);
-            // },500)
+//             setTimeout(()=>{
+//                 span.classList.remove("active");
+//                 span.removeChild(s_image);
+//             },500)
 }
