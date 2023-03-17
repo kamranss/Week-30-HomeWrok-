@@ -31,7 +31,7 @@ if (localStorage.getItem("basket") != null) {
                 <th id = "number" scope="row"></th>
                 <td><img src="${product.imgSRC}" alt="" width = "120" height = "120"></td>
                 <td id = "productName">${product.productName}</td>
-                <td><i id = "decrement" class="fa-solid fa-circle-minus"></i> <span id = "count">${product.count} </span> <i id = "increment" class="fa-solid fa-circle-plus" ></i></td>
+                <td><i id = "decrement" class="fa-solid fa-circle-minus"></i> <span id = "count">${product.count}</span> <i id = "increment" class="fa-solid fa-circle-plus" ></i></td>
                 <td>${product.price}</td>
                 <td><i id = "Icon-delete"class="fa-solid fa-trash" style="cursor: pointer;"></i></td>
             </tr>

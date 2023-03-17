@@ -53,4 +53,29 @@
     height: 0%;
     opacity: 0;
   }
+}
+.fa-circle-plus, .fa-circle-minus {
+  cursor: pointer;
+  margin-left: 10px;
+  margin-right: 10px;
+  transition: 0.5s;
+}
+
+.fa-circle-minus:hover {
+  transform: scale(1.5);
+  color: rgb(82, 93, 90);
+}
+
+.fa-circle-plus:hover {
+  transform: scale(1.5);
+  color: rgb(82, 93, 90);
+}
+
+#Icon-delete {
+  transition: 0.5s;
+}
+
+#Icon-delete:hover {
+  transform: scale(2);
+  color: rgb(82, 93, 90);
 }/*# sourceMappingURL=basket.css.map */
