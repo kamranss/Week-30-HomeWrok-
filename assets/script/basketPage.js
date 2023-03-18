@@ -10,7 +10,7 @@ if (localStorage.getItem("basket") != null) {
         let headTr = document.createElement("tr");
             if (tableHead.innerText == "") {
                 headTr.innerHTML = `
-                <tr>
+                <tr class = "trHead">
                     <th scope="col">#</th>
                     <th scope="col">Image</th>
                     <th scope="col">Name</th>
@@ -98,24 +98,31 @@ function DeleteFilesUsingIcon(){
                     console.log(existProduct);
                     if (existProduct != undefined) {
                         let newArr = arr.filter(product =>  product.productName != productName);
+                        totalPriceduringIncrementandDecrement(newArr)
                         localStorage.setItem("basket", JSON.stringify(newArr));
                     }
-                    // Swal.fire({
-                    //     title: 'Do you want to save the changes?',
-                    //     showDenyButton: true,
-                    //     showCancelButton: true,
-                    //     confirmButtonText: 'Save',
-                    //     denyButtonText: `Don't save`,
-                    //   }).then((result) => {
-                    //     /* Read more about isConfirmed, isDenied below */
-                    //     if (result.isConfirmed) {
-                    //       Swal.fire('Saved!', '', 'success')
-                    //     } else if (result.isDenied) {
-                    //       Swal.fire('Changes are not saved', '', 'info')
-                    //     }
-                    //   })
+                    // sweet alert 
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "You won't be able to revert this!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes, delete it!'
+                      }).then((result) => {
+                        if (result.isConfirmed) {
+                          Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                          )
+                        }
+                      })
                     
+
                     mainTr.parentNode.removeChild(mainTr);
+                    basketCountCalculator();
 
                 }
             }
@@ -126,11 +133,17 @@ function DeleteFilesUsingIcon(){
 
             if (!numbers.length > 0) {
 
-                tHeadChildTr = document.querySelector(".trHead");
+                let totalPrice = document.querySelector(".total-price");
+                totalPrice.parentNode.removeChild(totalPrice);
+                let tableHead = document.getElementById("tableHead");
+                tableHeadChildTr = tableHead.firstChild
+                console.log(tableHeadChildTr);
+                tHeadChildTr = document.getElementsByClassName("trHead");
+                console.log(tHeadChildTr);
 
-                tHeadChildTrParent = tHeadChildTr.parentNode; // issue
-
-                tHeadChildTr.parentNode.removeChild(tHeadChildTr);
+                // tHeadChildTrParent = tHeadChildTr.parentNode; // issue
+                tableHeadChildTr.parentNode.removeChild(tableHeadChildTr)
+                // tHeadChildTr.parentNode.removeChild(tHeadChildTr);
 
             }
 
@@ -161,11 +174,7 @@ function decrementIcon (){
                 newArr.count--;
                 dIcon.nextElementSibling.innerText = newArr.count
 
-                let spanPrice = document.querySelector(".span-price");
-                console.log(spanPrice);
-                let totalPrice = totalPriceCalculator(arr)
-                console.log(totalPrice);
-                spanPrice.innerText = `${totalPrice}`
+                totalPriceduringIncrementandDecrement(arr);
 
                 localStorage.setItem("basket", JSON.stringify(arr))
 
@@ -193,6 +202,9 @@ function incrementIcon (){
             if (newArr.count >0) {
                 newArr.count++;
                 iIcon.previousElementSibling.innerText = newArr.count
+
+                totalPriceduringIncrementandDecrement(arr);
+
                 localStorage.setItem("basket", JSON.stringify(arr))
 
             }  
@@ -209,4 +221,18 @@ function totalPriceCalculator(productList){
         totalPrice+= p.price.slice(0,p.price.length-1) * p.count
     })
     return totalPrice;
+}
+
+function totalPriceduringIncrementandDecrement(productList){
+    let spanPrice = document.querySelector(".span-price");
+    let totalPrice = totalPriceCalculator(productList)
+    spanPrice.innerText = `${totalPrice} $`
+}
+
+
+function basketCountCalculator(){
+    if (localStorage.getItem("basket") != null) {
+        let arr =  JSON.parse(localStorage.getItem("basket"));
+        basketCount.innerText = arr.length;
+    }
 }
