@@ -97,11 +97,7 @@ function DeleteFilesUsingIcon(){
                     let existProduct = arr.find(product => product.productName == productName);
                     console.log(existProduct);
                     if (existProduct != undefined) {
-                        let newArr = arr.filter(product =>  product.productName != productName);
-                        totalPriceduringIncrementandDecrement(newArr)
-                        localStorage.setItem("basket", JSON.stringify(newArr));
-                    }
-                    // sweet alert 
+                         // sweet alert 
                     Swal.fire({
                         title: 'Are you sure?',
                         text: "You won't be able to revert this!",
@@ -112,6 +108,12 @@ function DeleteFilesUsingIcon(){
                         confirmButtonText: 'Yes, delete it!'
                       }).then((result) => {
                         if (result.isConfirmed) {
+                            let newArr = arr.filter(product =>  product.productName != productName);
+                            totalPriceduringIncrementandDecrement(newArr)
+                            localStorage.setItem("basket", JSON.stringify(newArr));
+
+                            mainTr.parentNode.removeChild(mainTr);
+                            basketCountCalculator();
                           Swal.fire(
                             'Deleted!',
                             'Your file has been deleted.',
@@ -120,9 +122,9 @@ function DeleteFilesUsingIcon(){
                         }
                       })
                     
-
-                    mainTr.parentNode.removeChild(mainTr);
-                    basketCountCalculator();
+                       
+                    }
+               
 
                 }
             }
