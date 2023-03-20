@@ -36,8 +36,6 @@ if (localStorage.getItem("basket") != null) {
 
             }
             
-
-
         let tableBody = document.getElementById("tableBody");
         let bodyTr = document.createElement("tr")
             bodyTr.innerHTML = `
@@ -119,6 +117,29 @@ function DeleteFilesUsingIcon(){
                             'Your file has been deleted.',
                             'success'
                           )
+
+                          let numbers = document.querySelectorAll("#number");
+                            console.log(numbers);
+
+                            if (!numbers.length > 0) {
+
+                                let totalPrice = document.querySelector(".total-price");
+                                totalPrice.parentNode.removeChild(totalPrice);
+                                let tableHead = document.getElementById("tableHead");
+                                tableHeadChildTr = tableHead.firstChild
+                                console.log(tableHeadChildTr);
+                                tHeadChildTr = document.getElementsByClassName("trHead");
+                                console.log(tHeadChildTr);
+
+                                // tHeadChildTrParent = tHeadChildTr.parentNode; // issue
+                                tableHeadChildTr.parentNode.removeChild(tableHeadChildTr)
+                                // tHeadChildTr.parentNode.removeChild(tHeadChildTr);
+
+                            }
+
+                            numarationforItems();
+
+
                         }
                       })
                     
@@ -130,26 +151,7 @@ function DeleteFilesUsingIcon(){
             }
 
         
-            let numbers = document.querySelectorAll("#number");
-            console.log(numbers);
-
-            if (!numbers.length > 0) {
-
-                let totalPrice = document.querySelector(".total-price");
-                totalPrice.parentNode.removeChild(totalPrice);
-                let tableHead = document.getElementById("tableHead");
-                tableHeadChildTr = tableHead.firstChild
-                console.log(tableHeadChildTr);
-                tHeadChildTr = document.getElementsByClassName("trHead");
-                console.log(tHeadChildTr);
-
-                // tHeadChildTrParent = tHeadChildTr.parentNode; // issue
-                tableHeadChildTr.parentNode.removeChild(tableHeadChildTr)
-                // tHeadChildTr.parentNode.removeChild(tHeadChildTr);
-
-            }
-
-            numarationforItems();
+            
             
 
         });

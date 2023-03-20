@@ -79,12 +79,42 @@ function Animate(e){
             
             let s_image = image.cloneNode(true);
             span.appendChild(s_image);
-//             span.classList.add("active")
 
 
-        
-//             setTimeout(()=>{
-//                 span.classList.remove("active");
-//                 span.removeChild(s_image);
-//             },500)
+            // let basketCount = document.querySelector("#basketCount");
+            // let xyCordinates = basketCount.getBoundingClientRect()
+            // console.log(xyCordinates);
+            // let imagePositionX = xyCordinates.x
+            // let imagePositionY = xyCordinates.y
+            // let imageMover = document.querySelector(".image-mover");
+            // imageMover.style.setProperty('--x','${imagePositionX}');
+            // imageMover.style.setProperty('--y','${imagePositionX}');
+
+
+            // let basketCount = document.querySelector("#basketCount");
+            // let basketRect = basketCount.getBoundingClientRect();
+            // let targetX = basketRect.x;
+            // let targetY = basketRect.y;
+          
+           
+
+
+
+            // let basketCount = document.querySelector("#basketCount");
+            // let xyCoordinates = basketCount.getBoundingClientRect();
+            // let x = xyCoordinates.x + window.scrollX;
+            // let y = xyCoordinates.y + window.scrollY;
+
+            // document.documentElement.style.setProperty('--basket-x', `${x}px`);
+            // document.documentElement.style.setProperty('--basket-y', `${y}px`);
+          
+
 }
+
+
+
+
+                //setTimeout(()=>{
+                //span.classList.remove("active");
+                //span.removeChild(s_image);
+                //},500)

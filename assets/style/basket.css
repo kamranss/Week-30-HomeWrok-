@@ -25,6 +25,11 @@
   background-color: grey;
 }
 
+:root {
+  --basket-x: 0px;
+  --basket-y: 0px;
+}
+
 @keyframes test {
   0% {
     bottom: 0px;
@@ -45,10 +50,8 @@
     opacity: 0.5;
   }
   100% {
-    bottom: 400px;
-    bottom: 700px;
-    left: 100px;
-    left: 1000px;
+    bottom: var(--basket-y);
+    left: var(--basket-x);
     width: 0%;
     height: 0%;
     opacity: 0;
